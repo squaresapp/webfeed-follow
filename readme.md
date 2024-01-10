@@ -14,7 +14,7 @@ Add this library to your website with the following snippet:
 Add the `data-webfeed-href` attribute to any links that should be converted into click-to-follow buttons:
 
 ```html
-<a data-webfeed-href="/path/to/webfeed">Follow my Webfeed!</a>
+<a data-webfeed-href="/path/to/webfeed/index.txt">Follow my Webfeed!</a>
 ```
 
 The value specified in the `data-webfeed-href` may be relative to the current page, or it may be an absolute URL.
