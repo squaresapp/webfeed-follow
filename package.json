@@ -1,7 +1,7 @@
 {
 	"name": "webfeed-follow",
 	"author": "Paul Gordon",
-	"description": "Tools for following webfeeds from websites.",
+	"description": "Tools for following webfeeds from browsers.",
 	"version": "1.0.2",
 	"license": "MIT",
 	"main": "webfeed-follow.js",
