@@ -1,0 +1,21 @@
+{
+	"name": "webfeed-follow",
+	"author": "Paul Gordon",
+	"description": "Tools for following webfeeds from websites.",
+	"version": "1.0.2",
+	"license": "MIT",
+	"main": "webfeed-follow.js",
+	"types": "webfeed-follow.d.ts",
+	"files": [
+		"webfeed-follow.js",
+		"webfeed-follow.min.js",
+		"webfeed-follow.d.ts",
+		"webfeed-follow.d.ts.map",
+		"package.json"
+	],
+	"scripts": {
+		"bundle": "tsc -p tsconfig.json && terser ./webfeed-follow.js > ./webfeed-follow.min.js",
+		"test": "exit 0",
+		"release": "npm run bundle && np"
+	}
+}
