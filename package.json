@@ -8,13 +8,13 @@
 	"types": "webfeed-follow.d.ts",
 	"files": [
 		"webfeed-follow.js",
-		"webfeed-follow.min.js",
+		"min.js",
 		"webfeed-follow.d.ts",
 		"webfeed-follow.d.ts.map",
 		"package.json"
 	],
 	"scripts": {
-		"bundle": "tsc -p tsconfig.json && terser ./webfeed-follow.js > ./webfeed-follow.min.js",
+		"bundle": "tsc -p tsconfig.json && terser ./webfeed-follow.js > ./min.js",
 		"test": "exit 0",
 		"release": "npm run bundle && np"
 	}
