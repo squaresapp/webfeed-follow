@@ -4,6 +4,13 @@
 	"description": "Tools for following webfeeds from browsers.",
 	"version": "1.0.3",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/squaresapp/webfeed-follow"
+	},
+	"bugs": {
+		"url": "https://github.com/squaresapp/webfeed-follow/issues"
+	},
 	"main": "webfeed-follow.js",
 	"types": "webfeed-follow.d.ts",
 	"files": [
