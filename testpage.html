@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<script src="webfeed-follow.js"></script>
+<style>
+A
+{
+	display: block;
+	line-height: 2;
+}
+</style>
+
+<a href="#" data-webfeed-href="/relative/path">
+	/relative/path
+</a>
+
+<a href="#" data-webfeed-href="https://www.example.com/index.txt">
+	https://www.example.com/index.txt
+</a>
+
+<a id="dynamic-absolute" href="#">Absolute converted dynamically</a>
+<a id="dynamic-relative" href="#">Relative converted dynamically</a>
+
+<script>
+
+const dynamicAbsolute = document.getElementById("dynamic-absolute");
+const dynamicRelative = document.getElementById("dynamic-relative");
+
+WebfeedFollow.convertAnchor(
+	dynamicAbsolute,
+	"https://www.example.com/index.txt");
+
+WebfeedFollow.convertAnchor(
+	dynamicRelative,
+	"relative/path/to/the/index.txt");
+
+const dynamicCreated = WebfeedFollow.createAnchor(
+	"/rooted/relative/to/index.txt",
+	"non-rooted/relative/to/index.txt",
+	"https://www.example.com/index.txt");
+
+dynamicCreated.textContent = "This anchor should have 3 webfeeds in it.";
+dynamicRelative.after(dynamicCreated);
+
+</script>
