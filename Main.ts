@@ -135,7 +135,7 @@ namespace WebfeedFollow
 	 * NOTE: This isn't ideal, at all, but it's currently the best available
 	 * solution to maximize the probility of the proliferation of webfeeds.
 	 */
-	const redirectionUrl = "https://deeplinks.squaresapp.org/";
+	const redirectionUrl = "https://deeplink.squaresapp.org/";
 	
 	document.addEventListener("DOMContentLoaded", convertAllAnchors);
 }
