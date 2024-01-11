@@ -29,7 +29,7 @@ namespace WebfeedFollow
 			anchor.href = href;
 			anchor.addEventListener("click", () =>
 			{
-				writeClipboard(webfeedUrls.join("\n"));
+				writeClipboardWebfeeds(webfeedUrls);
 			});
 		}
 		
@@ -64,16 +64,18 @@ namespace WebfeedFollow
 	 */
 	export function go(...webfeedUrls: string[])
 	{
-		writeClipboard(webfeedUrls.join("\n"));
+		writeClipboardWebfeeds(webfeedUrls);
 		window.location.href = getRedirectionUrl(webfeedUrls);
 	}
 	
 	/**
-	 * Adds the specified text to the clipboard,
-	 * under all applicable mime types.
+	 * Writes the specified webfeeds to the clipboard, with the
+	 * clipboard header, under all applicable mime types.
 	 */
-	function writeClipboard(text: string)
+	function writeClipboardWebfeeds(webfeedUrls: string[])
 	{
+		const text = [clipboardHeader, ...webfeedUrls].join("\n");
+		
 		for (const type of clipboardDataTypes)
 		{
 			try
@@ -92,12 +94,20 @@ namespace WebfeedFollow
 	}
 	
 	/**
+	 * Stores the string that goes at the top of the list of webfeed URLs
+	 * that get copied to the clipboard. This is an added measure to ensure
+	 * that the webfeed reader doesn't try to read URLs that were copied
+	 * to the clipboard, but aren't actual webfeed URLs.
+	 */
+	const clipboardHeader = "(webfeeds)";
+	
+	/**
 	 * The list of data types to attempt to copy to the clipboard.
 	 * 
 	 * Some browsers (Chrome) don't allow text/uri-list copied
 	 * on write, so we fall back to text/plain in this case.
 	 */
-	const clipboardDataTypes = ["text/uri-list", "text/plain"];
+	const clipboardDataTypes = ["text/plain", "text/uri-list", "web text/uri-list"];
 	
 	const dataAttribute = "data-webfeed-href";
 	
