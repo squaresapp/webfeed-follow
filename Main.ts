@@ -116,6 +116,7 @@ namespace WebfeedFollow
 	{
 		const query = webfeedUrls
 			.map(s => toAbsoluteOrNull(s.replace(/&/g, "%26")))
+			.map(s => s?.trim())
 			.filter((s): s is string => !!s)
 			.join("&");
 		
@@ -145,7 +146,7 @@ namespace WebfeedFollow
 	 * NOTE: This isn't ideal, at all, but it's currently the best available
 	 * solution to maximize the probility of the proliferation of webfeeds.
 	 */
-	const redirectionUrl = "https://deeplink.squaresapp.org/";
+	const redirectionUrl = "https://deeplink.squaresapp.org/follow/";
 	
 	document.addEventListener("DOMContentLoaded", convertAllAnchors);
 }
