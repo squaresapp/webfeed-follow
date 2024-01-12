@@ -25,13 +25,7 @@ namespace WebfeedFollow
 		
 		const href = getRedirectionUrl(webfeedUrls);
 		if (href)
-		{
 			anchor.href = href;
-			anchor.addEventListener("click", () =>
-			{
-				writeClipboardWebfeeds(webfeedUrls);
-			});
-		}
 		
 		return anchor;
 	}
@@ -64,50 +58,8 @@ namespace WebfeedFollow
 	 */
 	export function go(...webfeedUrls: string[])
 	{
-		writeClipboardWebfeeds(webfeedUrls);
 		window.location.href = getRedirectionUrl(webfeedUrls);
 	}
-	
-	/**
-	 * Writes the specified webfeeds to the clipboard, with the
-	 * clipboard header, under all applicable mime types.
-	 */
-	function writeClipboardWebfeeds(webfeedUrls: string[])
-	{
-		const text = [clipboardHeader, ...webfeedUrls].join("\n");
-		
-		for (const type of clipboardDataTypes)
-		{
-			try
-			{
-				const blob = new Blob([text], { type });
-				const data = [new ClipboardItem({ [type]: blob })];
-				navigator.clipboard.write(data);
-			}
-			catch (e)
-			{
-				continue;
-			}
-			
-			break;
-		}
-	}
-	
-	/**
-	 * Stores the string that goes at the top of the list of webfeed URLs
-	 * that get copied to the clipboard. This is an added measure to ensure
-	 * that the webfeed reader doesn't try to read URLs that were copied
-	 * to the clipboard, but aren't actual webfeed URLs.
-	 */
-	const clipboardHeader = "(webfeeds)";
-	
-	/**
-	 * The list of data types to attempt to copy to the clipboard.
-	 * 
-	 * Some browsers (Chrome) don't allow text/uri-list copied
-	 * on write, so we fall back to text/plain in this case.
-	 */
-	const clipboardDataTypes = ["text/plain", "text/uri-list", "web text/uri-list"];
 	
 	const dataAttribute = "data-webfeed-href";
 	
@@ -140,13 +92,6 @@ namespace WebfeedFollow
 		return null;
 	}
 	
-	/**
-	 * 
-	 * 
-	 * NOTE: This isn't ideal, at all, but it's currently the best available
-	 * solution to maximize the probility of the proliferation of webfeeds.
-	 */
 	const redirectionUrl = "https://deeplink.squaresapp.org/follow/";
-	
 	document.addEventListener("DOMContentLoaded", convertAllAnchors);
 }
