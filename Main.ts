@@ -72,7 +72,12 @@ namespace WebfeedFollow
 			.filter((s): s is string => !!s)
 			.join("&");
 		
-		return redirectionUrl + "?" + query;
+		const url = redirectionUrl + "?" + query;
+		
+		if (url.length > 2048)
+			throw new Error("URL is " + url.length + " characters long. The maximum is 2048 characters.");
+		
+		return url;
 	}
 	
 	/**
