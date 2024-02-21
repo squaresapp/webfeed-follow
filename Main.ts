@@ -27,6 +27,7 @@ namespace WebfeedFollow
 		if (href)
 			anchor.href = href;
 		
+		anchor.addEventListener("click", () => copyToClipboard(href));
 		return anchor;
 	}
 	
@@ -62,6 +63,22 @@ namespace WebfeedFollow
 	}
 	
 	const dataAttribute = "data-webfeed-href";
+	
+	/**
+	 * Copies the specified value to the clipboard, under the
+	 * text/uri-list and web text/uri-list mime types.
+	 */
+	export async function copyToClipboard(value: string)
+	{
+		const blob = new Blob([value], { type: mimeType });
+		const clipboardItem = new ClipboardItem({ [mimeType]: blob });
+		await navigator.clipboard.write([clipboardItem]);
+	}
+	
+	/**
+	 * Stores the mime type to use when copying data to the clipboard.
+	 */
+	export const mimeType = /^apple /.test(navigator.vendor || "") ? "text/uri-list" : "web text/uri-list";
 	
 	/** */
 	function getRedirectionUrl(webfeedUrls: string[])
