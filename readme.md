@@ -43,5 +43,5 @@ However, on iOS or Android, it's not possible to determine if an app is installe
 
 A previous version of this library opted for this "eventual open standard" design, but it resulted in a user experience we found to be unacceptable. If Webfeeds are to become a viable alternative to mainstream social media, the follow-from-web experience needs to be best-in-class. RSS didn't deliver in this area and it was disasterous for it's adoption. We must be careful not to repeat these mistakes.
 
-Before clicking on the link, the URLs to follow are first copied to the clipboard. Squares checks the clipboard for URLs to follow when it gains the focus. This may seem a bit brittle, but the clipboard mime type used is `text/uri-list`, so clipboard overwrites should be uncommon.
+Before clicking on the link, the URLs to follow are first copied to the clipboard. Squares checks the clipboard for URLs to follow when it gains the focus. This may seem a bit brittle, but the clipboard mime type used is `text/uri-list` for Safari and `web text/uri-list` for other browsers, so clipboard overwrites should be uncommon.
 
