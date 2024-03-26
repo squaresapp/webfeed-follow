@@ -37,11 +37,11 @@ Triggers a redirection of the browser window to the installed webfeed reader (wh
 
 ## How This Works
 
-At this point, the links created by this library are iOS Universal Links / Android AppLinks which redirect the user to the [Squares](https://www.squaresapp.org) app, or to the app store to download Squares if it's not installed. **This really sucks**. If Webfeeds are to become an adopted standard, there needs to be multiple Webfeed readers, and the follow links that exist all over the internet need to use an open URI scheme, such as `webfeed://...`, so that any webfeed reader installed on the device can receive the request.
+At this point, the links created by this library are iOS Universal Links / Android AppLinks which redirect the user to the [Squares](https://www.squaresapp.org) app, or to the app store to download Squares if it's not installed. **This really sucks**. If Webfeeds are to become an adopted standard, multiple Webfeed readers need to exist, and the follow links that exist all over the internet need to use an open URI scheme, such as `webfeed://...`, so that any webfeed reader installed on the device can receive the request.
 
 However, on iOS or Android, it's not possible to determine if an app is installed on the users device that can handle a given URI scheme. This is necessary in order to know when to redirect the user to the appropriate app store so that the user can download a webfeed reader. 
 
-A previous version of this library opted for this "eventual open standard" design, but it resulted in a user experience we found to be unacceptable. If Webfeeds are to become a viable alternative to mainstream social media, the follow-from-web experience needs to be best-in-class. RSS didn't deliver in this area and it was disasterous for it's adoption. We must be careful not to repeat these mistakes.
+A previous version of this library opted for this "eventual open standard" design, but it resulted in a user experience we found to be unacceptable. If Webfeeds are to become a viable exit strategy for mainstream social media, the follow-from-web experience needs to be best-in-class. RSS didn't deliver in this area and it was disasterous for it's adoption. We must be careful not to repeat these mistakes.
 
 Before clicking on the link, the URLs to follow are first copied to the clipboard. Squares checks the clipboard for URLs to follow when it gains the focus. This may seem a bit brittle, but the clipboard mime type used is `text/uri-list` for Safari and `web text/uri-list` for other browsers, so clipboard overwrites should be uncommon.
 
